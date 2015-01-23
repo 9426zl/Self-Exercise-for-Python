@@ -38,23 +38,44 @@ class Application(Frame):
 		self.WebnameLabel.grid(column = 0, row = 5, sticky = W)
 		self.senameInput = Entry(self)
 		self.senameInput.grid(column = 1, row = 5, sticky = W)
-		self.seButton = Button(self, text = 'Search', command = self.saveInformation)
+		self.seButton = Button(self, text = 'Search', command = self.searchInformation)
 		self.seButton.grid(column = 2, row = 5, padx =5)
 
 
 	def saveInformation(self):
-	"define the save function"
+		"define the search function"
 		Webname = self.nameInput.get()
 		Aconame = self.accountInput.get()
 		PassWord = self.passwordInput.get()
+		fp = open("InfoSaved.txt", 'a')
+		fp.write(Webname)
+		fp.write("\t")
+		fp.write(Aconame)
+		fp.write("\t")
+		fp.write(PassWord)
+		fp.write("\n")
+		fp.close()
 		
 		tkMessageBox.showinfo("Message", "Information Saved:\n Website: %s\n Account: %s\n PassWord: %s"
 							% (Webname, Aconame, PassWord))
 
 
-	def saveInformation(self):
-	"define the search function"
+	def searchInformation(self):
+		"define the search function"
+		searchname = self.senameInput.get()
+		fp = open("InfoSaved.txt", 'r')
+		found = False
+		for line in fp:
+			if searchname in line:
+				ansline = line
+				found = True
+				break
 		
+		if found:
+			tkMessageBox.showinfo("Message","The account name and password for the site is %s"
+								% ansline)
+		else:
+			tkMessageBox.showinfo("Message","The account name and password for the site is not found")
 
 app = Application()
 # Set the title of the GUI
