@@ -1,5 +1,5 @@
 # coding=gbk
-import os, random, struct
+import os, random, struct, string
 from Tkinter import *
 import tkMessageBox
 from Crypto.Cipher import AES
@@ -99,7 +99,9 @@ class Application(Frame):
 
     def generatePassWord(self):
         "define the password generate function"
-        pass
+        chars = string.ascii_lowercase + string.digits
+        password = ''.join(random.choice(chars) for _ in range(8))
+        self.passwordInput.insert(8,password)
 
 
     def encrypt_file(self):
