@@ -31,7 +31,7 @@ class Application(Frame):
         self.passwordInput = Entry(self)
         self.passwordInput.grid(column=1, row=3, sticky=W)
 
-        self.saveButton = Button(self, text=u'±£´æ ',
+        self.saveButton = Button(self, text=u"   ±£´æ   ",
                                  command=self.saveInformation)
         self.saveButton.grid(column=2, row=3, padx=5)
 
@@ -43,9 +43,15 @@ class Application(Frame):
         self.WebnameLabel.grid(column=0, row=5, sticky=W)
         self.senameInput = Entry(self)
         self.senameInput.grid(column=1, row=5, sticky=W)
-        self.seButton = Button(self, text=u'ËÑË÷',
+        self.seButton = Button(self, text=u"   ËÑË÷   ",
                                command=self.searchInformation)
         self.seButton.grid(column=2, row=5, padx=5)
+
+        "define the password generate module"
+        self.gewordButton = Button(self, text=u"ÃÜÂëÉú³É",
+                                    command=self.generatePassWord)
+        self.gewordButton.grid(column=2, row=2, padx=5)
+
 
     def saveInformation(self):
         "define the search function"
@@ -89,6 +95,11 @@ class Application(Frame):
         self.senameInput.delete(0, END)
 
         self.encrypt_file()
+
+
+    def generatePassWord(self):
+        "define the password generate function"
+        pass
 
 
     def encrypt_file(self):
