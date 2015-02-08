@@ -25,7 +25,7 @@ class Application(object):
                 outfile.truncate(origsize)
 
 
-
-app = Application()
-app.decrypt_file()
+if __name__ == '__main__':
+    app = Application()
+    app.decrypt_file()
 
