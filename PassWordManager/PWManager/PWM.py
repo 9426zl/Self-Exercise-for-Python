@@ -58,6 +58,14 @@ class Application(Frame):
         Webname = self.nameInput.get()
         Aconame = self.accountInput.get()
         PassWord = self.passwordInput.get()
+
+        if not os.path.isfile('InfoSaved.enc.txt'):
+             file_test = open('InfoSaved.txt', 'w')
+             file_test.write('This is the initial word!\n')
+             file_test.close()
+             self.encrypt_file()
+
+
         self.decrypt_file()
         fp = open("InfoSaved.txt", 'a')
         fp.write(Webname)
@@ -136,6 +144,8 @@ class Application(Frame):
         in_filename = "InfoSaved.enc.txt"
         out_filename = "InfoSaved.txt"
         chunksize = 64*1024
+
+
 
         with open(in_filename, 'rb') as infile:
             origsize = struct.unpack('<Q', infile.read(struct.calcsize('Q')))[0]
