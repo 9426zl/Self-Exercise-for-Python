@@ -43,3 +43,8 @@ Temporary Items
 .apdisk
 *.xml
 PassWordManager/.idea/workspace.xml
+*.pyc
+*.txt
+WebRobot/tutorial/.idea/tutorial.iml
+*.name
+*.json
