@@ -12,6 +12,7 @@ BOT_NAME = 'MovieSpider'
 
 SPIDER_MODULES = ['MovieSpider.spiders']
 NEWSPIDER_MODULE = 'MovieSpider.spiders'
+ITEM_PIPELINES = ['MovieSpider.pipelines.MoviespiderPipeline']
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'MovieSpider (+http://www.yourdomain.com)'
