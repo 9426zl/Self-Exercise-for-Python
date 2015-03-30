@@ -48,3 +48,9 @@ PassWordManager/.idea/workspace.xml
 WebRobot/tutorial/.idea/tutorial.iml
 *.name
 *.json
+WebRobot/.idea/WebRobot.iml
+WebRobot/DoubanSpider/.idea/DoubanSpider.iml
+*.iml
+WebRobot/tutorial/Books
+WebRobot/tutorial/intro
+WebRobot/tutorial/Resources
