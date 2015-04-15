@@ -54,3 +54,5 @@ WebRobot/DoubanSpider/.idea/DoubanSpider.iml
 WebRobot/tutorial/Books
 WebRobot/tutorial/intro
 WebRobot/tutorial/Resources
+*.xml
+PassWordManager/.idea/workspace.xml
