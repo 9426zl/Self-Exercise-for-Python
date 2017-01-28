@@ -58,3 +58,13 @@ WebRobot/tutorial/Resources
 PassWordManager/.idea/workspace.xml
 
 *.sqlite
+
+*.ini
+
+Flask/MYsite/migrations/env.py
+
+Flask/MYsite/migrations/README
+
+Flask/MYsite/migrations/script.py.mako
+
+Flask/MYsite/migrations/versions/3d761c60554c_init_migrations.py
