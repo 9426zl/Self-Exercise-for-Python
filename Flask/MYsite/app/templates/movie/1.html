@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}MY site{% endblock %}
+
+{% block page_content %}
+
+
+<div class="content-item">
+    <h1>不可饶恕 Unforgiven(1992)</h1>
+    <p class="star-button">
+    {% if current_user.is_authenticated %}
+        {% if not current_user.is_staring('001') %}
+        <a href="{{ url_for('movie.star', movieid=id) }}" class="btn btn-default">Star</a>
+        {% else %}
+        <a href="{{ url_for('movie.unstar', movieid=id) }}" class="btn btn-default">Unstar</a>
+        {% endif %}
+    {% endif %}
+    </p>
+    <div class="movie-item-2nd">
+        <img class="movie-post-item" src="http://img3.douban.com/view/movie_poster_cover/spst/public/p1083392613.jpg">
+        <div class="movie-brief-item">
+            <span>导演：克林特·伊斯特伍德 </span><br>
+            <span>主演：克林特·伊斯特伍德&nbsp吉姆·哈克曼&nbsp摩根·弗里曼</span><br>
+            <span>IMDb：8.3/10&nbsp&nbsp豆瓣：8.4/10</span><br>
+            <span>制片国家/地区：美国</span><br>
+            <span>语言：英语</span><br>
+            <span>点评：如同一壶老酒,细品香醇,回味无穷......</span>
+        </div>
+    </div>
+    <div class="movie-comment-item">
+         堪萨斯的农民威廉（克林特·伊斯特伍德 Clint Eastwood ）年轻时曾是出名的杀手和劫匪，然而当遇上了克劳迪亚
+         后，他的生活开始彻底改变。威廉和克劳迪亚结婚生子后，洗手不干，一家人过着幸福的生活。好景不长，克劳迪亚不久故去，威
+         廉独立带着两个孩子过着清贫宁静的生活。这时，该地区发生了一起牛仔醉酒殴打妓女并将其毁容的恶性事件，坏蛋警长
+         达格特（吉恩·哈克曼 Gene Hackman 饰)只将此事草草了结，凶手仍逍遥法外。当地妓女纷纷捐钱，要求悬红1000美金请杀手
+         来伸张正义。“思科菲尔德小子”找到威廉，要求合伙干这票买卖。为了给孩子们一个幸福富足的家庭，威廉终于答应再次出山。
+    </div>
+    <div>
+        <h3 class="post-head-item">不可饶恕的影评</h3>
+        {% include '_posts_movie.html' %}
+    </div>
+    {% if current_user.is_authenticated %}
+        <h3 class="your-post">你的评论</h3>
+        <div class="col-md-5" id="movie-comment">
+            {{ wtf.quick_form(form) }}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

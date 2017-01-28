@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+
+{% block title %}MY - {{ title }} {{ user.username }}{% endblock %}
+
+{% block page_content %}
+<div class="star-page-header">
+    <h1>{{ user.username }} {{ title }}</h1>
+</div>
+<table class="table table-hover stars" id="star_tbl">
+    {% for star in stars %}
+    <tr>
+        <td>
+                {{ star.movie.name }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="pagination" id="star-pagination">
+    {{ macros.pagination_widget(pagination, endpoint, username = user.username) }}
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}MY site{% endblock %}
+
+{% block page_content %}
+
+<div class="content-item">
+    <h1>老无可依 No Country for Old Men(2007)</h1>
+    <p class="star-button">
+    {% if current_user.is_authenticated %}
+        {% if not current_user.is_staring('006') %}
+        <a href="{{ url_for('movie.star', movieid=id) }}" class="btn btn-default">Star</a>
+        {% else %}
+        <a href="{{ url_for('movie.unstar', movieid=id) }}" class="btn btn-default">Unstar</a>
+        {% endif %}
+    {% endif %}
+    </p>
+    <div class="movie-item-2nd">
+        <img class="movie-post-item" src="http://img3.douban.com/view/movie_poster_cover/spst/public/p1602287352.jpg">
+        <div class="movie-brief-item">
+            <span>导演：伊桑·科恩&nbsp乔尔·科恩 </span><br>
+            <span>主演：汤米·李·琼斯&nbsp哈维尔·巴登</span><br>
+            <span>IMDb：8.1/10&nbsp&nbsp豆瓣：7.9/10</span><br>
+            <span>制片国家/地区：美国</span><br>
+            <span>语言：英语/西班牙语</span><br>
+            <span>点评：静静流淌的紧促与恐惧......</span>
+        </div>
+    </div>
+    <div class="movie-comment-item">
+        美国德克萨斯州乡村，老牛仔Moss（Josh Brolin 饰）在猎杀羚羊时发现几具尸体，几包海洛因和200万现金。Moss决定将毒品和
+        现金占为己有，想以此改变自己的生活，谁知却遭到冷血杀手Chigurh（Javier Bardem 饰）的跟踪和追杀，陷入了逃亡的险境。
+        同时，当地治安官Bell（Tommy Lee Jones 饰）也在对一连串的杀人事件进行调查，并努力保护Moss的安全。但是，让Bell感到
+        无力绝望的是，他使劲浑身解数也无法追踪到冷血杀手，Moss的生命安全也受到严重的威胁，Bell一边缅怀父辈们的光荣岁月，一边
+        深感现实中老无所依的悲哀。
+    </div>
+
+    <div>
+        <h3 class="post-head-item">老无所依</h3>
+        {% include '_posts_movie.html' %}
+    </div>
+    {% if current_user.is_authenticated %}
+        <h3 class="your-post">你的评论</h3>
+        <div class="col-md-5" id="movie-comment">
+            {{ wtf.quick_form(form) }}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}MY - Setting{% endblock %}
+
+{% block page_content %}
+<div class="setting-page-header">
+    <h1>设置</h1>
+</div>
+<div class="post-tabs">
+    <ul class="nav nav-tabs" id="nav1">
+        <li{% if not show_account %} class="active"{% endif %}>
+            {% if user == current_user %}
+                <a class="btn btn-default" href="{{ url_for('main.edit_profile') }}">基本资料</a>
+            {% elif current_user.is_administrator() %}
+                <a class="btn btn-danger" href="{{ url_for('main.edit_profile_admin', id=user.id) }}">基本资料 [Admin]</a>
+            {% endif %}
+        </li>
+        <li{% if show_account %}class="active"{% endif %}>
+            <a href="{{ url_for('auth.change_password') }}">账号密码</a>
+        </li>
+        <li{% if show_account %}class="active"{% endif %}>
+            <a href="{{ url_for('main.upload_image') }}">账号头像</a>
+        </li>
+    </ul><br>
+    <div class="col-md-4">
+    {% if not uploadimage %}
+        {{ wtf.quick_form(form) }}
+    {% else %}
+        <form action="" method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.image }}<br/>
+        <input type="submit" value="上传">
+        </form>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

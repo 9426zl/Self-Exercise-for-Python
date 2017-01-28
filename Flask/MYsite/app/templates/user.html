@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}MY site{% endblock %}
+
+{% block page_content %}
+<div class="user-page-header">
+    <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(size=256) }}" height="256" width="256">
+    <div class="profile-header">
+        <h1>{{ user.username }}</h1>
+        {% if user.name or user.location %}
+        <p>
+            {% if user.name %}{{ user.name }}<br>{% endif %}
+            {% if user.location %}
+                From <a href="http://maps.google.com/?q={{ user.location }}">{{ user.location }}</a><br>
+            {% endif %}
+        </p>
+        {% endif %}
+        {% if current_user.is_administrator() %}
+        <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+        {% endif %}
+        {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+        <p>Member since {{ moment(user.member_since).format('L') }}. Last seen {{ moment(user.last_seen).fromNow() }}.</p>
+        <p>发布{{ user.posts.count() }}篇电影评论</p>
+        <p>
+            {% if  current_user.can(Permission.FOLLOW) and user != current_user %}
+                {% if not current_user.is_following(user) %}
+                <a href="{{ url_for('.follow', username=user.username) }}" class="btn btn-primary">关注</a>
+                {% else %}
+                <a href="{{ url_for('.unfollow', username=user.username) }}" class="btn btn-default">取消关注</a>
+                {% endif %}
+            {% endif %}
+            <a href="{{ url_for('.followers', username=user.username) }}"> 关注者: <span class="badge">{{ user.followers.count() }}</span>&nbsp</a>
+            <a href="{{ url_for('.followed_by', username=user.username) }}"> 关注了: <span class="badge">{{ user.followed.count() }}</span>&nbsp</a>
+            <a href="{{ url_for('.star_movies', username=user.username) }}"> 收藏影片: <span class="badge">{{ user.starfilm.count() }}</span>&nbsp</a>
+            <a href=" "> 赞同: <span class="badge">{{ user.upvotes.count() }}</span></a>
+            {% if current_user.is_authenticated and user != current_user and user.is_following(current_user) %}
+            | <span class="label label-default">Follows you</span>
+            {% endif %}
+        </p>
+    </div>
+</div>
+<div class="post-tabs">
+    <ul class="nav nav-tabs" id="nav">
+        <li{% if not show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_star_movie', username=user.username) }}">收藏影片</a></li>
+        <li{% if show_followed == 1 %} class="active"{% endif %}><a href="{{ url_for('.show_followed', username=user.username) }}">关注的人</a></li>
+        <li{% if show_followed == 2 %} class="active"{% endif %}><a href="{{ url_for('.show_comment', username=user.username) }}">评论</a></li>
+    </ul><br>
+        {% include '_comments.html' %}
+        {% include '_posts.html' %}
+    {% if pagination %}
+    <div class="pagination" id="user-pagination">
+    {{ macros.pagination_widget(pagination, '.user', username=user.username) }}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

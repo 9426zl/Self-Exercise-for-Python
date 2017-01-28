@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}MY - Post{% endblock %}
+
+{% block page_content %}
+<div class="post-for-post">
+    {% include '_posts.html' %}
+</div>
+<div class="comment-for-post">
+    {% if current_user.can(Permission.COMMENT) %}
+    <div class="col-md-5" id="comment-for-post-form">
+        {{ wtf.quick_form(form) }}
+    </div>
+    {% endif %}
+    <div class="comment-in-comment">
+    {% include '_comments.html' %}
+    </div>
+    {% if pagination %}
+    <div class="pagination" id="comment-pagination">
+        {{ macros.pagination_widget(pagination, 'movie.post', postid=posts[0].id) }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

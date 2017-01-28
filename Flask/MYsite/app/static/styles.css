@@ -1,0 +1,418 @@
+/*------------------- base page ------------------- */
+html, body{
+    height:100%;
+}
+
+#base-message {
+    margin-bottom: -5px;
+}
+
+.page-container {
+    min-height: 100%;
+    _height:100%;
+    margin-bottom:-50px;
+}
+
+.footer_placeholder {
+    height:50px;
+}
+
+.page-end {
+    clear: both;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 0px auto;
+}
+
+.page-end span{
+    margin: 0 100px 10px 0;
+    float:right;
+}
+
+.navbar {
+    margin-bottom: 0px;
+    padding-bottom:0px;
+}
+
+.inverse-dropdown{
+    min-width: 0px;
+    width: 120px;
+    background-color: #222;
+    border-color: #080808;
+}
+
+.inverse-dropdown span {
+    color: #999;
+}
+
+
+/*------------------- index page -------------------*/
+
+#left {
+    height: 500px;
+    margin-top: 100px;
+}
+
+#right {
+    height: 500px;
+    margin-top: 100px;
+}
+
+.carousel-caption {
+    margin-bottom: -30px;
+}
+
+.carousel-indicators {
+    margin-bottom: 80px;
+}
+
+.carousel-inner {
+    margin-top: 0px;
+    width:100%;
+}
+
+.index-page-content{
+    width: 65%;
+    margin: 80px auto;
+}
+
+#aboutme {
+    font-size: 29px;
+    text-align: center;
+}
+
+#description {
+    font-size: 21px;
+    text-indent: 2em;
+    line-height: 2;
+    letter-spacing: 2px;
+}
+
+.movie-item {
+    margin-top: 20px;
+}
+
+.movie-pic {
+    float: left; margin: 0 10px;
+}
+
+.movie-brief {
+    padding: 5px 20px;
+}
+
+.movie-brief>a {
+    font-size: 20px;
+}
+
+.movie-brief span {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/*------------------- login page -------------------*/
+.login-page-header {
+    margin: 30px auto;
+}
+
+.login-page-header h1 {
+    margin-top: 80px;
+    margin-left: 80px;
+}
+
+#login-form {
+    margin-left: 62px;
+    margin-bottom: 160px;
+    clear: both;
+}
+
+
+/*------------------- register-page -------------------*/
+.register-page-header {
+    margin: 30px auto;
+}
+
+.register-page-header h1 {
+    margin-top: 80px;
+    margin-left: 80px;
+}
+
+#register-form {
+    margin-left: 62px;
+    margin-bottom: 100px;
+    clear: both;
+}
+
+
+/*------------------- user page -------------------*/
+.user-page-header, .star-page-header, .follower-page-header {
+    margin: 60px auto;
+    width: 90%;
+}
+
+.profile-thumbnail {
+    position: absolute;
+}
+
+.profile-header {
+    min-height: 260px;
+    margin-left: 280px;
+}
+
+.post-tabs {
+    width: 90%;
+    margin: 20px auto;
+}
+
+#nav {
+    width: 85%;
+}
+
+.post-user {
+    margin-left: -20px;
+}
+
+.post-content {
+    margin: 20px 0;
+    line-height: 1.5;
+}
+
+.post-author {
+    float: left;
+    font-size: 17px;
+    margin: 10px 0 5px 40px;
+    line-height: 20px;
+}
+
+.post-date {
+    float: right;
+    font-size: 13px;
+    font-family: Georgia;
+    font-style: italic;
+    line-height: 20px;
+    margin: 10px 200px 10px 0px;
+}
+
+.post-span-text {
+    float: left;
+}
+
+.post-title {
+    clear: both;
+    width: 85%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 16px;
+    line-height: 30px;
+    vertical-align: middle;
+    font-weight: bold;
+    border-bottom-style: dashed;
+    border-width: 1px;
+    border-color: #eee;
+}
+
+#follower_tbl, #star_tbl {
+    width: 80%;
+    margin: -10px 0 30px 50px;
+}
+
+#follower-pagination, #star-pagination {
+    margin-left: 50px;
+}
+
+/*------------------- setting page -------------------*/
+.setting-page-header {
+    margin: 30px auto;
+}
+
+.setting-page-header h1 {
+    margin-top: 80px;
+    margin-left: 80px;
+}
+
+#nav1 {
+    width: 85%;
+    margin-left: 10px;
+}
+
+/*------------------- movie page -------------------*/
+.content-item {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.content-item h1 {
+    font-size: 30px;
+    margin: 60px 0px 30px 20px;;
+    width: 70%;
+    float: left;
+}
+
+.star-button a {
+    float:left;
+    margin-top: 60px;
+}
+
+.movie-item-2nd {
+    clear: both;
+    margin:25px 20px;
+    position: relative;
+}
+
+.movie-post-item {
+    float: left;
+    margin-right: 25px;
+}
+
+.movie-brief-item {
+    float: left;
+    line-height: 1.8;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.movie-comment-item {
+    clear: both;
+    margin: 10px 20px 20px;
+    font-size: 14px;
+    line-height: 1.8;
+    width: 90%;
+    text-indent: 2em;
+}
+
+.post-head-item {
+    margin: 45px 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.post-item {
+    margin:0 0 0 -20px;
+}
+
+.post-content-item {
+    margin: 20px 0;
+    line-height: 1.5;
+}
+
+.post-title-item {
+    font-size: 16px;
+    background-color:#f0f3f5;
+    width: 75%;
+    line-height: 30px;
+    vertical-align: middle;
+    font-family: sans-serif;
+}
+
+.post-author-item {
+    float: left;
+    font-size: 17px;
+    margin: 10px 20px 5px 0;
+    line-height: 20px;
+}
+
+.post-date-item {
+    float: left;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 10px 0 10px;
+}
+
+.post-body-item {
+    font-size: 16px;
+    clear: both;
+    width: 75%;
+    margin: 20px 0;
+    padding-bottom: 10px;
+    border-bottom-style: dashed;
+    border-width: 1px;
+    border-color: #eee;
+}
+
+.your-post {
+    margin: 55px 18px 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#movie-comment {
+    margin-bottom: 30px;
+}
+
+/*------------------- comment -------------------*/
+.comment-user {
+    margin-left: -20px;
+}
+
+.comment-content {
+    margin: 20px 0;
+    line-height: 1.5;
+}
+
+.comment-author {
+    float: left;
+    font-size: 17px;
+    margin: 10px 0 5px 40px;
+    line-height: 20px;
+}
+
+
+.comment-date {
+    float: right;
+    font-size: 13px;
+    font-family: Georgia;
+    font-style: italic;
+    line-height: 20px;
+    margin: 10px 200px 5px 0px;
+}
+
+.comment-body {
+    clear: both;
+    width: 85%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 16px;
+    line-height: 30px;
+    vertical-align: middle;
+    font-weight: bold;
+    border-bottom-style: dashed;
+    border-width: 1px;
+    border-color: #eee;
+}
+
+/*------------------- comment -------------------*/
+.post-for-post {
+    width: 85%;
+    margin:80px auto 10px auto;
+}
+
+.comment-for-post {
+    width: 85%;
+    margin:10px auto ;
+}
+
+#comment-for-post-form {
+    margin-bottom: 50px;
+}
+
+.comment-in-comment {
+    width:100%;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+#comment-reply {
+    margin-top: 10px;
+}
+
+#comment-pagination {
+    padding-left:25px;
+}
+
+
+

@@ -1,0 +1,17 @@
+<ul class="posts">
+    {% for post in posts %}
+    <li class="post-item">
+        <div class="post-content-item">
+            <div class="post-title-item">{{ post.title }} </div>
+            <div class="post-author-item"><a href="{{ url_for('main.user', username=post.author.username) }}">{{ post.author.username }}</a></div>
+            <div class="post-date-item">{{ moment(post.timestamp).fromNow() }} </div>
+            <div class="post-body-item">{{ post.body }}<br>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('movie.post', postid=post.id) }}" class="badge">Comment</a>
+                <a href="{{ url_for('movie.upvote', postid=post.id, movieid=post.movie_id) }}" class="badge">Upvotes: {{ post.upvotes.count() }}</a><br>
+            {% endif %}
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>

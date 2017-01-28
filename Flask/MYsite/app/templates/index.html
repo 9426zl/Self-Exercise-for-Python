@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}MY site{% endblock %}
+
+{% block page_content %}
+
+<div id="carousel" class="carousel-slide" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <a href="{{ url_for('movie.bestmovie', movieid='5') }}">
+                <img src="static/4.jpg" alt="0 slide">
+            </a>
+            <div class="carousel-caption">最佳出价</div>
+        </div>
+        <div class="item">
+            <a href="{{ url_for('movie.bestmovie', movieid='2') }}">
+                <img src="static/1.jpg" alt="1 slide">
+            </a>
+            <div class="carousel-caption">英国病人</div>
+        </div>
+        <div class="item">
+            <a href="{{ url_for('movie.bestmovie', movieid='10') }}">
+                <img src="static/9.jpg" alt="2 slide">
+            </a>
+            <div class="carousel-caption">拯救大兵瑞恩</div>
+        </div>
+        <div class="item">
+            <a href="{{ url_for('movie.bestmovie', movieid='4') }}">
+                <img src="static/3.jpg" alt="3 slide">
+            </a>
+            <div class="carousel-caption">摔角王</div>
+        </div>
+        <div class="item">
+            <a href="{{ url_for('movie.bestmovie', movieid='1') }}">
+                <img src="static/0.jpg" alt="4 slide">
+            </a>
+            <div class="carousel-caption">不可饶恕</div>
+        </div>
+        <div class="item">
+            <a href="{{ url_for('movie.bestmovie', movieid='6') }}">
+                <img src="static/5.jpg" alt="5 slide">
+            </a>
+            <div class="carousel-caption">老无可依</div>
+        </div>
+        <div class="item">
+            <a href="{{ url_for('movie.bestmovie', movieid='7') }}">
+                <img src="static/6.jpg" alt="6 slide">
+            </a>
+            <div class="carousel-caption">谍影重重</div>
+        </div>
+        <div class="item">
+            <a href="{{ url_for('movie.bestmovie', movieid='8') }}">
+                <img src="static/7.jpg" alt="7 slide">
+            </a>
+            <div class="carousel-caption">勇敢的心</div>
+        </div>
+        <div class="item">
+            <a href="{{ url_for('movie.bestmovie', movieid='9') }}">
+                <img src="static/8.jpg" alt="8 slide">
+            </a>
+            <div class="carousel-caption">无间道</div>
+        </div>
+        <div class="item">
+            <a href="{{ url_for('movie.bestmovie', movieid='3') }}">
+                <img src="static/2.jpg" alt="9 slide">
+            </a>
+            <div class="carousel-caption">教父</div>
+        </div>
+    </div>
+
+    <a class="left carousel-control" href="#carousel" role="button" data-slide="prev" id="left">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+    <a class="right carousel-control" href="#carousel" role="button" data-slide="next" id="right">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div class="index-page-content">
+    <p id="aboutme">-&nbspAbout MY&nbsp-</p><br>
+    <p id="description">迷影(MY)学习Flask框架而搭建的电影小站，实现对电影作品的关注、影评的发表、已发表影评的评论、喜欢以及对其它用户的
+        关注等功能。前端采用bootstrap框架，前端技术仅是根据建站需求寻找资料进行初步学习，因而界面略显简陋请见谅小站功能也在不断完善之中。</p>
+</div>
+{% endblock %}

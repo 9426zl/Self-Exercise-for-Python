@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}MY site{% endblock %}
+
+{% block page_content %}
+
+<div class="content-item">
+    <h1>摔角王 The Wrestler(2008)</h1>
+    <p class="star-button">
+    {% if current_user.is_authenticated %}
+        {% if not current_user.is_staring('004') %}
+        <a href="{{ url_for('movie.star', movieid=id) }}" class="btn btn-default">Star</a>
+        {% else %}
+        <a href="{{ url_for('movie.unstar', movieid=id) }}" class="btn btn-default">Unstar</a>
+        {% endif %}
+    {% endif %}
+    </p>
+    <div class="movie-item-2nd">
+        <img class="movie-post-item" src="http://img3.douban.com/mpic/s3347050.jpg">
+        <div class="movie-brief-item">
+            <span>导演：达伦·阿伦诺夫斯基 </span><br>
+            <span>主演：米基·洛克</span><br>
+            <span>IMDb：7.9/10&nbsp&nbsp豆瓣：8.3/10</span><br>
+            <span>制片国家/地区：美国/法国</span><br>
+            <span>语言：英语</span><br>
+            <span>点评：在命运的低谷中，也许我无力反抗，但我仍愿为尊严拼尽所有力气，纵身一跃......</span>
+        </div>
+    </div>
+    <div class="movie-comment-item">
+        绰号“大锤”的兰迪•罗宾森（Mickey Rourke 米基•洛克 饰）是上世纪80年代美国独立摔角圈中一颗耀眼的明星，他留下了无数经典的比赛，其绝招“大锤粉碎压”更虏获众多狂热的摔角爱好者。
+        随着行业的飞速发展和身体健康状况的下降，属于“大锤”的时代早已远去。出于对摔角的热爱，兰迪始终没有离开这个圈子，他忍受着生活拮据，忍受着伤痛困扰，只为了和陪伴多年的摔角迷们享受每一次秀所带来的莫大快乐。他固执地追逐着最后一丝荣光，私人生活却越来越糟。长年奔波以致和女儿斯蒂芬妮（Evan Rachel Wood 埃文•蕾切尔•伍德 饰）的关系疏远，剧烈的撞击和不断摄取处方药又令他的心脏接近崩溃边缘。孤独的他只能在每次艰苦的比赛之后，从脱衣舞女卡西迪（Marisa Tomei 玛丽莎•托梅 饰）那里得到些许短暂的安慰。
+        因身体的原因，兰迪决定退出摔角圈，做一份稳定的工作，并找回家庭的温暖。但经理人策划了一场二十周年的经典重赛。为了毕生钟爱的摔角、为了狂热执著的摔角迷、为了心中长久以来所坚持的，兰迪终于再次披挂上阵，重返擂台……
+        本片荣获2008年威尼斯电影节金狮奖、2009年英国艺术电影电视学院奖（BAFTA）最佳男主角奖（Mickey Rourke）、2009年金球奖最佳原创歌曲和最佳男主角。
+    </div>
+
+    <div>
+        <h3 class="post-head-item">摔角王</h3>
+        {% include '_posts_movie.html' %}
+    </div>
+    {% if current_user.is_authenticated %}
+        <h3 class="your-post">你的评论</h3>
+        <div class="col-md-5" id="movie-comment">
+            {{ wtf.quick_form(form) }}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

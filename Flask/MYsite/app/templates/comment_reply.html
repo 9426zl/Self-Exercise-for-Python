@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}MY - Comment Reply{% endblock %}
+
+{% block page_content %}
+<div class="post-for-post">
+    <h4 id="comments">Comments Reply</h4>
+    {% if current_user.can(Permission.COMMENT) %}
+        <div class="col-md-5"> {{ wtf.quick_form(form) }} </div>
+    {% endif %}
+</div>
+{% endblock %}

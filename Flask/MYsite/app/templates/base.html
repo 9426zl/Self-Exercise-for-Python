@@ -1,0 +1,74 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}MY site{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">MY site</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('main.index') }}">主页</a></li>
+                <li><a href="{{ url_for('main.warmovie') }}">战争片</a></li>
+                <li><a href="{{ url_for('main.crimemovie') }}">罪案片</a></li>
+                <li><a href="{{ url_for('main.clinteastwood') }}">克林特·伊斯特伍德</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                <li class="dropdown" style="width: 120px;">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"  style="width=100%; text-align: center;">
+                        <img src="{{ current_user.gravatar(size=22) }}" height="22" width="22">
+                        &nbsp&nbsp{{ current_user.username }}&nbsp<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu inverse-dropdown">
+                        <li><a href="{{ url_for('main.user', username=current_user.username) }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span>&nbsp&nbsp我的主页</span></a></li>
+                        <li><a href="{{ url_for('main.user', username=current_user.username) }}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span>&nbsp&nbsp站内信<span></a></li>
+                        <li><a href="{{ url_for('main.setting', username=current_user.username) }}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><span>&nbsp&nbsp设置<span></a></li>
+                        <li><a href="{{ url_for('auth.logout') }}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span><span>&nbsp&nbsp登出</span></a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li><a href="{{ url_for('auth.login') }}" style="width=70px; text-align: center;"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp&nbsp登入</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="page-container" >
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning" id="base-message">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+    <div class="footer_placeholder"></div>
+</div>
+<div class="page-end">
+    <hr><span>MY电影小站</span>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}

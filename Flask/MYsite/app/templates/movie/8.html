@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}MY site{% endblock %}
+
+{% block page_content %}
+
+<div class="content-item">
+    <h1>勇敢的心 Braveheart(1995)</h1>
+    <p class="star-button">
+    {% if current_user.is_authenticated %}
+        {% if not current_user.is_staring('008') %}
+        <a href="{{ url_for('movie.star', movieid=id) }}" class="btn btn-default">Star</a>
+        {% else %}
+        <a href="{{ url_for('movie.unstar', movieid=id) }}" class="btn btn-default">Unstar</a>
+        {% endif %}
+    {% endif %}
+    </p>
+    <div class="movie-item-2nd">
+        <img class="movie-post-item" src="http://img3.douban.com/view/movie_poster_cover/spst/public/p1374546770.jpg">
+        <div class="movie-brief-item">
+            <span>导演：梅尔·吉普森 </span><br>
+            <span>主演：梅尔·吉普森&nbsp苏菲·玛索</span><br>
+            <span>IMDb：8.4/10&nbsp&nbsp豆瓣：8.8/10</span><br>
+            <span>制片国家/地区：美国</span><br>
+            <span>语言：英语/法语/拉丁语/苏格兰盖尔语</span><br>
+            <span>点评：时间只是生命的一个维度......</span>
+        </div>
+    </div>
+    <div class="movie-comment-item">
+        威廉•华莱士童年时，其父、苏格兰民族英雄马索•华莱士在与英军的斗争中牺牲，他开始接受父亲好友的指导，学习苏格兰文化和武术。
+        青年华莱士（梅尔•吉布森）学成回到故乡，向美丽的少女梅伦求婚，不想梅伦被英军抢去且遭杀害。在广大村民“英雄之后”的呼声中，
+        华莱士率众揭竿起义，并与苏格兰贵族罗伯结成联盟，但不久他发现，苏格兰贵族考虑的只是自身的利益。英王为缓和局势，派伊莎贝拉
+        （苏菲•玛索）前去和华莱士谈判，由于英王只想收买华莱士，根本不顾苏格兰人民的自由和平等，谈判失败，但这一切并不为伊莎贝拉所
+        知。伊莎贝拉归国后发现事情真相，且知晓英王正策划阴招，忙送信给华莱士，而两人的爱情，也在战争与阴谋中悄然滋生。
+    </div>
+    <div>
+        <h3 class="post-head-item">勇敢的心</h3>
+        {% include '_posts_movie.html' %}
+    </div>
+    {% if current_user.is_authenticated %}
+        <h3 class="your-post">你的评论</h3>
+        <div class="col-md-5" id="movie-comment">
+            {{ wtf.quick_form(form) }}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

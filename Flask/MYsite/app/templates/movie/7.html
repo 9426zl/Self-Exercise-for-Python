@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}MY site{% endblock %}
+
+{% block page_content %}
+
+<div class="content-item">
+    <h1>谍影重重 The Bourne Identity(2002)</h1>
+    <p class="star-button">
+    {% if current_user.is_authenticated %}
+        {% if not current_user.is_staring('007') %}
+        <a href="{{ url_for('movie.star', movieid=id) }}" class="btn btn-default">Star</a>
+        {% else %}
+        <a href="{{ url_for('movie.unstar', movieid=id) }}" class="btn btn-default">Unstar</a>
+        {% endif %}
+    {% endif %}
+    </p>
+    <div class="movie-item-2nd">
+        <img class="movie-post-item" src="http://img3.douban.com/view/movie_poster_cover/spst/public/p1597183981.jpg">
+        <div class="movie-brief-item">
+            <span>导演：道格·里曼 </span><br>
+            <span>主演：马特·达蒙</span><br>
+            <span>IMDb：7.9/10&nbsp&nbsp豆瓣：8.5/10</span><br>
+            <span>制片国家/地区：美国/德国/捷克</span><br>
+            <span>语言：英语/法语/德语/荷兰语/意大利语</span><br>
+            <span>点评：朴实......</span>
+        </div>
+    </div>
+    <div class="movie-comment-item">
+        杰森·伯恩（马特·达蒙 饰）在意大利被人从海上救起，他失去了记忆，除了臀部的瑞士银行帐号之外，他完全没有办法证明自己的身份。
+        杰森从瑞士银行找到了大量的现金，六本护照，一把枪，同时他发现自己格斗、枪械、和语言等方面的能力，他开始追查自己的身份，并且把陌生女子玛丽（弗兰卡·泼坦特 饰）也卷了进来。两人从瑞士到巴黎，一路上受到神秘杀手组织的追杀，危机重重。
+        杰森能否化险为夷，找到自己的真实身份？他是否有勇气面对真相？
+    </div>
+
+    <div>
+        <h3 class="post-head-item">谍影重重</h3>
+        {% include '_posts_movie.html' %}
+    </div>
+    {% if current_user.is_authenticated %}
+        <h3 class="your-post">你的评论</h3>
+        <div class="col-md-5" id="movie-comment">
+            {{ wtf.quick_form(form) }}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

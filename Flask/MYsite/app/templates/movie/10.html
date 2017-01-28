@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}MY site{% endblock %}
+
+{% block page_content %}
+
+<div class="content-item">
+    <h1>拯救大兵瑞恩 Saving Private Ryan(1998)</h1>
+    <p class="star-button">
+    {% if current_user.is_authenticated %}
+        {% if not current_user.is_staring('010') %}
+        <a href="{{ url_for('movie.star', movieid=id) }}" class="btn btn-default">Star</a>
+        {% else %}
+        <a href="{{ url_for('movie.unstar', movieid=id) }}" class="btn btn-default">Unstar</a>
+        {% endif %}
+    {% endif %}
+    </p>
+    <div class="movie-item-2nd">
+        <img class="movie-post-item" src="http://img4.douban.com/view/movie_poster_cover/spst/public/p1014542496.jpg">
+        <div class="movie-brief-item">
+            <span>导演：史蒂文·斯皮尔伯格 </span><br>
+            <span>主演：汤姆·汉克斯&nbsp汤姆·塞子摩尔&nbsp巴里·佩珀</span><br>
+            <span>IMDb：8.6/10&nbsp&nbsp豆瓣：8.8/10</span><br>
+            <span>制片国家/地区：美国</span><br>
+            <span>语言：英语/法语/德语/捷克语</span><br>
+            <span>点评：忘不了留给少时心灵的震撼......</span>
+        </div>
+    </div>
+    <div class="movie-comment-item">
+    瑞恩（马特•达蒙 Matt Damon饰 ）是二战期间的美国伞兵，被困在了敌人后方。更不幸的是，他的三个兄弟全部在战争中死亡，
+    如果他也遇难，家中的老母亲将无依无靠。美国作战总指挥部知道了这个情况，毅然决定组织一个小分队前往救援，其中包括米勒
+    上尉（汤姆•汉克斯 Tom Hanks 饰 ）和翻译厄本（杰里米.戴维斯 Jererry Davies饰）。然而，敌方危险重重，他们一路上
+    随时与死亡打交道。他们非常怀疑，到底值不值得冒着八个人的生命危险，去搭救一个人。大家一路辗转寻找瑞恩，对于这次搭救
+    行动，有人不满，有人热忱，有人好奇。大家一次次闻到死神的气息，瑞恩的获救付出了沉重的代价。
+    </div>
+
+    <div>
+        <h3 class="post-head-item">拯救大兵瑞恩</h3>
+        {% include '_posts_movie.html' %}
+    </div>
+    {% if current_user.is_authenticated %}
+        <h3 class="your-post">你的评论</h3>
+        <div class="col-md-5" id="movie-comment">
+            {{ wtf.quick_form(form) }}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}
